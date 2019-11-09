@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import HomePage from "./pages";
 import AboutPage from "./pages/about";
-import NotFound from "./pages/404"
+import GamePage from "./pages/game";
+import NotFound from "./pages/404";
 
 function App() {
   return (
@@ -14,6 +15,9 @@ function App() {
             </Route>
             <Route path="/about">
                 <AboutPage />
+            </Route>
+            <Route path="/game">
+                <GamePage />
             </Route>
             <Route path="*">
                 <NotFound />
