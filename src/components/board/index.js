@@ -16,19 +16,19 @@ const boardRule = [
     [2,2,2,2,2],
     [0,0,2,0,0],
     [0,2,2,2,0],
-    [2,1,2,1,2]
+    [2,0,2,0,2]
 ];
 
-const boardData = boardRule.map((number) =>
+const boardData = boardRule.map((number, index) =>
     <div className="board">
         {
             number.map(function(type) {
                 if (type === 2 ) {
-                    return <FireBox />
+                    return <FireBox coordinateX={type} coordinateY={index} />
                 } else if (type === 1) {
-                    return <Box contain = "white" />
+                    return <Box contain = "white" coordinateX={type} coordinateY={index} />
                 } else if (type === 3) {
-                    return <TreeBox />
+                    return <TreeBox coordinateX={type} coordinateY={index} />
                 } else {
                     return <Box contain="black" />
                 }
