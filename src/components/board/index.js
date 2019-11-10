@@ -23,11 +23,6 @@ const boardData = boardRule.map((number) =>
     <div className="board">
         {
             number.map(function(type) {
-                // if (type === 1) {
-                //     return <Box contain="white"/>
-                // } else {
-                //     return <Box contain="black"/>
-                // }
                 if (type === 2 ) {
                     return <FireBox />
                 } else if (type === 1) {
