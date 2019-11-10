@@ -1,0 +1,14 @@
+.bluefire-img {
+    width: 46px;
+    height: 46px;
+}
+
+.bluefire-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-style: solid;
+    width: 46px;
+    height: 46px;
+}
