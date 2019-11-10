@@ -1,4 +1,5 @@
-# DamDamn
+<h1 align=center>DamDamn</h1>
+
 This is a Dam Daman game project built using ReactJS + Docker.
 
 ## Available Script
@@ -26,3 +27,7 @@ Open http://localhost:3001 to view it in the browser.
 
 The page will reload if you make edits.
 You will also see any lint errors in the console.
+
+## Contributors
+
+- [Athallah Annafis](http://github.com/annafis1)
