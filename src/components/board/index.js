@@ -1,6 +1,7 @@
 import React from "react";
 
 import FireBox from "./fire";
+import TreeBox from "./tree";
 import Box from "./boardBox";
 import "./index.css"
 
@@ -32,7 +33,7 @@ const boardData = boardRule.map((number) =>
                 } else if (type === 1) {
                     return <Box contain = "white" />
                 } else if (type === 3) {
-                    return <Box contain="white"/>
+                    return <TreeBox />
                 } else {
                     return <Box contain="black" />
                 }
