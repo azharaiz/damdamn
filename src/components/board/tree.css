@@ -1,0 +1,14 @@
+.tree-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-style: solid;
+    width: 46px;
+    height: 46px;
+}
+
+.purpletree-img {
+    width: 46px;
+    height: 46px;
+}

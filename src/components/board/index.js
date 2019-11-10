@@ -1,34 +1,36 @@
 import React from "react";
 
+import FireBox from "./fire";
+import TreeBox from "./tree";
 import Box from "./boardBox";
 import "./index.css"
 
 const boardRule = [
-    [2,-1,2,-1,2],
-    [-1,2,2,2,-1],
-    [-1,-1,2,-1,-1],
-    [2,2,2,2,2],
-    [2,2,2,2,2],
-    [0,0,0,0,0],
+    [3,1,3,1,3],
+    [0,3,3,3,0],
+    [0,0,3,0,0],
+    [3,3,3,3,3],
     [1,1,1,1,1],
     [1,1,1,1,1],
-    [-1,-1,1,-1,-1],
-    [-1,1,1,1,-1],
-    [1,-1,1,-1,1]
+    [1,1,1,1,1],
+    [2,2,2,2,2],
+    [0,0,2,0,0],
+    [0,2,2,2,0],
+    [2,1,2,1,2]
 ];
 
 const boardData = boardRule.map((number) =>
     <div className="board">
         {
             number.map(function(type) {
-                if (type === -1) {
-                    return <Box contain="black"/>
-                } else if (type === 0){
-                    return <Box contain="white"/>
-                } else if (type === 1){
-                    return <Box contain="red"/>
+                if (type === 2 ) {
+                    return <FireBox />
+                } else if (type === 1) {
+                    return <Box contain = "white" />
+                } else if (type === 3) {
+                    return <TreeBox />
                 } else {
-                    return <Box contain="blue"/>
+                    return <Box contain="black" />
                 }
             }
         )}
