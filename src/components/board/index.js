@@ -5,7 +5,7 @@ import TreeBox from "./tree";
 import Box from "./boardBox";
 import "./index.css"
 
-const boardRule = [
+const initBoard = [
     [3,0,3,0,3],
     [0,3,3,3,0],
     [0,0,3,0,0],
@@ -23,7 +23,7 @@ class Board extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            gameBoard: boardRule,
+            gameBoard: initBoard,
             gameState: null,
             pondPickCoordinate: [0,0],
             pondDropCoordinate: [0,0]
@@ -50,18 +50,18 @@ class Board extends React.Component {
     }
 
     render() {
-        const boardData = this.state.gameBoard.map((number, index) =>
+        const boardData = this.state.gameBoard.map((number, indexY) =>
             <div className="board">
                 {
-                    number.map(function(type) {
+                    number.map(function(type, indexX) {
                             if (type === 0 ) {
                                 return <Box contain="black" />
                             } else if (type === 1) {
-                                return <Box contain = "white" coordinateX={type} coordinateY={index} />
+                                return <Box contain = "white" coordinateX={indexX} coordinateY={indexY} />
                             } else if (type === 2) {
-                                return <FireBox coordinateX={type} coordinateY={index} />
+                                return <FireBox coordinateX={indexX} coordinateY={indexY} />
                             } else if (type === 3) {
-                                return <TreeBox coordinateX={type} coordinateY={index} />
+                                return <TreeBox coordinateX={indexX} coordinateY={indexY} />
                             }
                             return false;
                         }
