@@ -31,3 +31,7 @@ You will also see any lint errors in the console.
 ## Contributors
 
 - [Athallah Annafis](http://github.com/annafis1)
+
+## License
+
+See the [LICENSE](LICENSE.md) file for license rights and limitations (MIT).
