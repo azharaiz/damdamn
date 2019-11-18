@@ -1,6 +1,6 @@
 import React from "react";
 import Fire from "../sprites/fire/fire_blue01.png"
-import "./fire.css"
+import "../../style/board/fire.css"
 
 
 

@@ -3,7 +3,7 @@ import React from "react";
 import FireBox from "./fire";
 import TreeBox from "./tree";
 import Box from "./boardBox";
-import "./index.css"
+import "../../style/board/index.css"
 
 const boardRule = [
     [3,1,3,1,3],

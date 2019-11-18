@@ -1,6 +1,6 @@
 import React from "react";
 import Tree from "../sprites/tree/tree_purple.png";
-import "./tree.css";
+import "../../style/board/tree.css";
 class TreeBox extends React.Component {
     render() {
         return (

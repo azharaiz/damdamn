@@ -4,6 +4,13 @@ import Board from "../components/board";
 import {Link} from "react-router-dom";
 
 class Game extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            squares: Array(64)
+        }
+    }
+
     render() {
         return(
             <div>
