@@ -18,10 +18,6 @@ export default class Tree extends Piece {
         );
     }
 
-    /**
-     * always returns empty array because of one step
-     * @return {[]}
-     */
     getSrcToDestPath(src, dest){
         return [];
     }

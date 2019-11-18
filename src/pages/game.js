@@ -9,12 +9,10 @@ export default class Game extends React.Component {
         super();
         this.state = {
             squares: initialiseChessBoard(),
-            whiteFallenSoldiers: [],
-            blackFallenSoldiers: [],
             player: 1,
             sourceSelection: -1,
             status: '',
-            turn: 'white'
+            turn: 'red'
         }
     }
 
@@ -48,31 +46,19 @@ export default class Game extends React.Component {
             else{
 
                 const squares = this.state.squares.slice();
-                const whiteFallenSoldiers = this.state.whiteFallenSoldiers.slice();
-                const blackFallenSoldiers = this.state.blackFallenSoldiers.slice();
                 const isDestEnemyOccupied = squares[i]? true : false;
                 const isMovePossible = squares[this.state.sourceSelection].isMovePossible(this.state.sourceSelection, i, isDestEnemyOccupied);
                 const srcToDestPath = squares[this.state.sourceSelection].getSrcToDestPath(this.state.sourceSelection, i);
                 const isMoveLegal = this.isMoveLegal(srcToDestPath);
 
                 if(isMovePossible && isMoveLegal){
-                    if(squares[i] !== null){
-                        if(squares[i].player === 1){
-                            whiteFallenSoldiers.push(squares[i]);
-                        }
-                        else{
-                            blackFallenSoldiers.push(squares[i]);
-                        }
-                    }
                     squares[i] = squares[this.state.sourceSelection];
                     squares[this.state.sourceSelection] = null;
                     let player = this.state.player === 1? 2: 1;
-                    let turn = this.state.turn === 'white'? 'black' : 'white';
+                    let turn = this.state.turn === 'red'? 'green' : 'red';
                     this.setState({
                         sourceSelection: -1,
                         squares: squares,
-                        whiteFallenSoldiers: whiteFallenSoldiers,
-                        blackFallenSoldiers: blackFallenSoldiers,
                         player: player,
                         status: '',
                         turn: turn
