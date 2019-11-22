@@ -13,6 +13,8 @@ export default class Game extends React.Component {
       sourceSelection: -1,
       status: "",
       turn: "red",
+      score1: 0,
+      score2: 0
     };
   }
 
@@ -53,28 +55,23 @@ export default class Game extends React.Component {
         const isDestEnemyOccupied = squares[i] ? true : false;
         const diffSrcDest = i - this.state.sourceSelection;
         let enemy = 0;
-        let positive = true;
         let enemyBefore;
         if (diffSrcDest > 0) {
           enemy = i - 5;
         } else if (diffSrcDest < 0) {
           enemy = i + 5;
-          positive = false;
         } else if (diffSrcDest === 2) {
           enemy = i - 1;
         } else if (diffSrcDest === -2) {
           enemy = i + 1;
-          positive = false;
         } else if (diffSrcDest === 12) {
           enemy = i - 6;
         } else if (diffSrcDest === -12) {
           enemy = i + 6;
-          positive = false;
         } else if (diffSrcDest === 8) {
           enemy = i - 4;
         } else if (diffSrcDest === -8) {
           enemy = i + 4;
-          positive = false;
         }
         enemyBefore = squares[enemy];
         const isEnemyBeforeOccupied = enemyBefore ? true : false;
