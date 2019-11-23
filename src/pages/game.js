@@ -3,6 +3,7 @@ import React from "react";
 import "../index.css";
 import Board from "../components/board/index";
 import initialiseChessBoard from "../helper/initBoard";
+// import "../ai/minmax"
 
 export default class Game extends React.Component {
   constructor() {
@@ -93,21 +94,21 @@ export default class Game extends React.Component {
           squares[this.state.sourceSelection] = null;
           if (isEnemyBeforeOccupied) {
             if (diffSrcDest === 12) {
-              squares[i-6] = null;
+              squares[i - 6] = null;
             } else if (diffSrcDest === -12) {
-              squares[i+6] = null;
+              squares[i + 6] = null;
             } else if (diffSrcDest === 10) {
-              squares[i-5] = null;
+              squares[i - 5] = null;
             } else if (diffSrcDest === -10) {
-              squares[i+5] = null;
+              squares[i + 5] = null;
             } else if (diffSrcDest === 8) {
-              squares[i-4] = null;
+              squares[i - 4] = null;
             } else if (diffSrcDest === -8) {
-              squares[i+4] = null;
+              squares[i + 4] = null;
             } else if (diffSrcDest === 2) {
-              squares[i-1] = null;
+              squares[i - 1] = null;
             } else if (diffSrcDest === -2) {
-              squares[i+1] = null;
+              squares[i + 1] = null;
             }
           }
           let player = this.state.player === 1 ? 2 : 1;
