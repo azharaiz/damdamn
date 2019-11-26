@@ -57,9 +57,9 @@ export default class Game extends React.Component {
         const diffSrcDest = i - this.state.sourceSelection;
         let enemy = 0;
         let enemyBefore;
-        if (diffSrcDest > 0) {
+        if (diffSrcDest === 10) {
           enemy = i - 5;
-        } else if (diffSrcDest < 0) {
+        } else if (diffSrcDest === -10) {
           enemy = i + 5;
         } else if (diffSrcDest === 2) {
           enemy = i - 1;
