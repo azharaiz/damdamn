@@ -13,7 +13,7 @@ export default class Game extends React.Component {
       player: 1,
       sourceSelection: -1,
       status: "",
-      turn: "red",
+      turn: "white",
       score1: 0,
       score2: 0
     };
@@ -23,16 +23,21 @@ export default class Game extends React.Component {
     const squares = this.state.squares.slice();
     const xAxis = index[1],
       yAxis = index[0];
-    console.log(index);
 
     if (this.state.sourceSelection === -1) {
-      if (!squares[yAxis][xAxis] || squares[yAxis][xAxis].player !== this.state.player) {
+      if (
+        !squares[yAxis][xAxis] ||
+        squares[yAxis][xAxis].player !== this.state.player
+      ) {
         this.setState({
           status:
             "Wrong selection. Choose player " + this.state.player + " pieces."
         });
         if (squares[yAxis][xAxis]) {
-          squares[yAxis][xAxis].style = { ...squares[yAxis][xAxis].style, backgroundColor: "" };
+          squares[yAxis][xAxis].style = {
+            ...squares[yAxis][xAxis].style,
+            backgroundColor: ""
+          };
         }
       } else {
         squares[yAxis][xAxis].style = {
@@ -41,32 +46,71 @@ export default class Game extends React.Component {
         };
         this.setState({
           status: "Choose destination for the selected piece",
-          sourceSelection: [xAxis,yAxis]
+          sourceSelection: [xAxis, yAxis]
         });
       }
     } else {
-      console.log(this.state.sourceSelection)
-      const x = this.state.sourceSelection[0], y = this.state.sourceSelection[1]; 
+      // xAxis & yAxis === destination click
+      // x & y === source click
+      console.log("src:", this.state.sourceSelection);
+      console.log("dest:", [xAxis, yAxis]);
+      const x = this.state.sourceSelection[0],
+        y = this.state.sourceSelection[1];
       squares[y][x].style = {
         ...squares[y][x].style,
         backgroundColor: ""
       };
-      
-      if (squares[yAxis][xAxis] && squares[yAxis][xAxis].player === this.state.player) {
+
+      if (
+        squares[yAxis][xAxis] &&
+        squares[yAxis][xAxis].player === this.state.player
+      ) {
         this.setState({
           status: "Wrong selection. Choose valid source and destination again.",
           sourceSelection: -1
         });
       } else {
         const squares = this.state.squares.slice();
-        
-        // const isMovePossible,isMoveLegal;
+        const isDestOccupied = squares[yAxis][xAxis] ? true : false;
+        const diffX = xAxis - x,
+          diffY = y - yAxis;
+        let isMoveLegal = true;
+        console.log("diff:", [diffX, diffY]);
+        if (
+          diffX > 2 ||
+          diffY > 2 ||
+          diffX < -2 ||
+          diffY < -2 ||
+          (diffX === 0 && diffY === 0)
+        ) {
+          isMoveLegal = false;
+        }
+        let enemy = false;
+        let isEnemyBeforeOccupied = false;
+        if (this.checkMovement(diffX, diffY)) {
+          enemy = this.checkMovement(diffX, diffY);
+          isEnemyBeforeOccupied = squares[enemy[1] + y][enemy[0] + x]
+            ? true
+            : false;
+        }
 
-        if (this.isMoveLegal){//isMovePossible && isMoveLegal) {
-          squares[yAxis][xAxis] = squares[this.state.sourceSelection];
-          squares[this.state.sourceSelection] = null;
+        const isMovePossible = squares[y][x].isMovePossible(
+          [x, y],
+          [xAxis, yAxis],
+          isDestOccupied,
+          isEnemyBeforeOccupied
+        );
+        // const isMovePossible,isMoveLegal;
+        if (isMoveLegal && isMovePossible) {
+          squares[yAxis][xAxis] = squares[y][x];
+          squares[y][x] = null;
+          if (enemy) {
+            console.log("return:", [enemy[0], enemy[1]]);
+            console.log("eat:", [enemy[0] + x, enemy[1] + y]);
+            squares[enemy[1] + y][enemy[0] + x] = null;
+          }
           let player = this.state.player === 1 ? 2 : 1;
-          let turn = this.state.turn === "red" ? "green" : "red";
+          let turn = this.state.turn === "white" ? "black" : "white";
           this.setState({
             sourceSelection: -1,
             squares: squares,
@@ -82,22 +126,29 @@ export default class Game extends React.Component {
           });
         }
       }
+      console.log("=====");
     }
   }
 
-  /**
-   * Check all path indices are null. For one steps move of pawn/others or jumping moves of knight array is empty, so  move is legal.
-   * @param  {[type]}  srcToDestPath [array of board indices comprising path between src and dest ]
-   * @return {Boolean}
-   */
-  isMoveLegal(srcToDestPath) {
-    let isLegal = true;
-    for (let i = 0; i < srcToDestPath.length; i++) {
-      if (this.state.squares[srcToDestPath[i]] !== null) {
-        isLegal = false;
-      }
+  checkMovement(x, y) {
+    if (x === 0 && y === 2) {
+      return [0, -1];
+    } else if (x === 0 && y === -2) {
+      return [0, 1];
+    } else if (x === 2 && y === 0) {
+      return [1, 0];
+    } else if (x === -2 && y === 0) {
+      return [-1, 0];
+    } else if (x === 2 && y === 2) {
+      return [1, -1];
+    } else if (x === -2 && y === 2) {
+      return [-1, -1];
+    } else if (x === 2 && y === -2) {
+      return [1, 1];
+    } else if (x === -2 && y === -2) {
+      return [-1, 1];
     }
-    return isLegal;
+    return false;
   }
 
   render() {
