@@ -14,8 +14,10 @@ export default class Piece {
     if (
       !isDestEnemyOccupied &&
       !(xDiff === 0 && yDiff === 0) &&
-      xDiff >= -1 && xDiff <= 1 &&
-      yDiff >= -1 && yDiff <= 1
+      xDiff >= -1 &&
+      xDiff <= 1 &&
+      yDiff >= -1 &&
+      yDiff <= 1
     ) {
       return true;
     } else if (

@@ -1,0 +1,157 @@
+* {
+    -webkit-transition: 0.25s;
+    -moz-transition: 0.25s;
+    -o-transition: 0.25s;
+    transition: 0.25s;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 500px;
+  align-self: center;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ 
+}
+
+.nama1{
+  text-align: center;
+  color: black;
+  font-size: 70px;
+}
+.nama2{
+  text-align: center;
+  color: black;
+  font-size: 30px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.buttons button {
+  border-style: solid;
+  font-weight: bolder;
+  padding: 10px 10px 10px 10px;
+  border-radius: 15px;
+  background-color: rgb(79, 45, 143);
+  border-color: rgb(79, 45, 143);
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  width: 140px;
+  font-size: 15pt;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-width: 4px;
+}
+
+.buttons button:hover {
+  background-color: white;
+  color: rgb(79, 45, 143);
+}
+
+.playerSelection-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.buttons-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.buttons-section button {
+  border-style: none;
+  background: white;
+  margin: 20px 20px;
+  padding: 10px 10px;
+  width: 100px;
+  border-radius: 10px;
+  color: rgb(79, 45, 143);
+  font-weight: bolder;
+  font-size: 16pt;
+}
+
+.buttons-section button:hover {
+  background: rgb(79, 45, 143);
+  color: white;
+}
+
+.player-box {
+  width: 200px;
+  height: 200px;
+}
+
+.border-hover {
+  border-style: solid;
+  border-color: white;
+  margin: 10px 10px;
+  border-radius: 10px;
+}
+
+.border-hover:hover {
+  border-style: solid;
+  border-color: rgb(79, 45, 143);
+
+}
+
+.play-button {
+  color: white;
+  font-weight: bold;
+  padding: 10px 10px;
+  border-style: solid;
+  border-color: green;
+  background-color: green;
+  border-radius: 10px;
+  margin-top: 40px;
+  font-size: 16pt;
+  border-width: 5px;
+}
+
+.play-button:hover{
+  background-color: white;
+  color: green;
+}
+
+.back-button {
+  background-color: rgb(79, 45, 143);
+  border-style: solid;
+  border-color: rgb(79, 45, 143);
+  font-weight: bold;
+  padding: 10px 10px;
+  border-radius: 10px;
+  color: white;
+  font-size: 13pt;
+  border-width: 4px;
+  
+}
+
+.back-button:hover {
+  background-color: white;
+  color: rgb(79, 45, 143);
+}
+
+@media only screen and (max-width:700px) {
+  .nama1 {
+    font-size: 30pt;
+  }
+  .nama2 {
+    font-size: 17pt;
+  }
+  .buttons button {
+    font-size: 13pt;
+    padding: 5px 5px;
+  }
+}
